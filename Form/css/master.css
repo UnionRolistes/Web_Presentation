@@ -145,11 +145,22 @@ button{
     line-height: 1.5;
 }
 
-select{
+
+#trancheAge{
     width: 52%;
-    -webkit-appearance: none;
     margin-left: 2%;
 }
 
+.beta{
+    text-align:center;
+    margin-top:5vh;
+    font-size:14px;
+    color:#990000;
+    font-family:mono;
+}
+
+.rouge{
+    color: red;
+}
 
 /*Mettre les régions sur la meme ligne ?*/

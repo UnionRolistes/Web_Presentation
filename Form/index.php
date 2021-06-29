@@ -1,4 +1,9 @@
-<?php //Mettre le html dans un fichier séparé ? ?>
+<?php
+
+$regions=["Auvergne-Rhône-Alpes","Bourgogne-Franche-Comté","Bretagne","Centre-Val de Loire","Grand Est","Hauts-de-France",
+"Île-de-France","Normandie","Nouvelle-Aquitaine","Occitanie","Pays de la Loire","Provence-Alpes-Côte d'Azur","Corse","Belgique","Suisse",
+"Luxembourg","DOM TOM","Europe","Québec"]; 
+?>
 
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -22,6 +27,20 @@
 
 <form method=post action=# id="URform">
     
+	<label>Connexion Discord <span class="rouge">*</span></label>
+    <input type="button" value="Me connecter" style="border-radius:10px;"/>
+
+<?php
+
+/*input type="button" value="Connect" style="border-radius:10px;" onclick="window.location.href='<?=REDIRECT_URI.'?action=login'; ?>'"/>*/
+/* DEMANDER nouvelle organisation du code à Lyss
+if(isset($_SESSION['access_token'])){
+			echo "<img src='$avatar_url'/>";
+			echo $pseudo;
+}else{ 
+	<input type="button" value="Connect" style="border-radius:10px;" onclick="window.location.href='<?php echo REDIRECT_URI . '?action=login'; ?>'"/>
+ } */?>
+		
 
     <label id="mode">Sombre 🌙</label>					
     <div>
@@ -31,80 +50,93 @@
         </label>
     </div>
 
-    <label for="region">Région :</label>
-        <input type="text" name="region" placeholder="Région" required/>
-        <input type="text" name="ville" placeholder="Ville"/>
 
-   
+    <label>Région : <span class="rouge">*</span></label>
+    <select name="region" id="region" required>
+            <option value="" selected>--Choisir--</option>
 
-        <label for="age"> </label> 
+        <?php foreach ($regions as $i => $region) { ?>
             
- <fieldset>
-    <legend>Age :</legend>
-    <label><input type="checkbox" id="checkAge" onclick="chgAgeDisplay()"> Indiquer une tranche d'âge à la place </label>
-    <label><input type="number" name="age" id="age" min="1"></label>
-
-    <select name="trancheAge" id="trancheAge" style="display: none">
-        <option value="" selected="selected">--Choisir--</option>
-        <option value="mineur">Mineur</option>
-        <option value="18/25">18/25</option>
-        <option value="25/35">25/35</option>
-        <option value="35/45">...Voir les tranches avec Dae</option>
+            <option value="<?=$region?>"><?=$region?></option>
+        <?php } ?>           
     </select>
+    
 
-  </fieldset>
+    
+    <label>Ville :</label>
+    <input type="text" name="ville" placeholder="Ville"/>
+ 
+            
+    <fieldset>
+        <legend>Age : <span class="rouge">*</span></legend>
+        <label><input type="checkbox" id="checkAge" onclick="chgAgeDisplay()"> Indiquer une tranche d'âge à la place </label>
+        <label><input type="number" name="age" id="age" min="1" required></label>
+
+        <select name="trancheAge" id="trancheAge" style="display: none">
+            <option value="" selected>--Choisir--</option>
+            <option value="Mineur -15 ans">Mineur -15 ans</option>
+            <option value="Mineur +15 ans">Mineur +15 ans</option>
+            <option value="18/20">18/20 ans</option>
+
+            <?php for ($i=2; $i <=7 ; $i++) { ?>
+                <option value="<?=$i.'0/'.($i+1).'0'?>"><?=$i.'0/'.($i+1).'0 ans'?></option>
+            
+            <?php } ?>
+            <option value="+80">+80 ans</option>
+
+        </select>
+    </fieldset>
 
 
-	<label for="phone_number">Ancienneté dans le JDR :</label>
-    <input type="text" name="ancienneté" placeholder="Ex : 3 ans"/>
+	<label>Ancienneté dans le JDR :</label>
+    <input type="text" name="experience" placeholder="Ex : 3 ans"/>
 
 
-    <label for="connaissance">Comment avez-vous connu le serveur :</label>
+    <label>Comment avez-vous connu le serveur : <span class="rouge">*</span></label>
     <input type="text" name="connaissance" placeholder="Ex : un ami, groupe Facebook" required/>                               
 
-    <label for="hobby">Hobby :</label>
+    <label>Hobby :</label>
     <input type="text" name="hobby" id="hobby" placeholder="Lecture, jeux, ...">
 
 
-    <label for="typeJoueur">MJ/PJ :</label>
+    <label>MJ/PJ :</label>
     <div>
         <input type="radio" name="typeJoueur" id="MJ" value="MJ">MJ&nbsp&nbsp&nbsp
         <input type="radio" name="typeJoueur" id="PJ" value="PJ">PJ
     </div>
 
-    <label for="JDR">JDR 🎲:</label>
+    <label>JDR 🎲: <span class="rouge">*</span></label>
     <input type="text" name="JDR" id="JDR" placeholder="Vos JDR préférés" required>
                         
 
-    <label for="like">J'aime :</label>
-    <input type="text" name="like" id="like" placeholder="J'aime">
+    <label>J'aime :</label>
+    <input type="text" name="like" id="like" placeholder="Le JDR, lire, ...">
 
-    <label for="dislike">J'aime pas :</label>
-    <input type="text" name="dislike" id="dislike" placeholder="J'aime pas">
+    <label>J'aime pas :</label>
+    <input type="text" name="dislike" id="dislike" placeholder="Rien, les légumes, ...">
 
-    <label for="dispos">Disponibilités :</label>
+    <label>Disponibilités :</label>
     <input type="text" name="dispos" id="dispos" placeholder="Quelques soirs, toutes les nuits, ...">
 
-    <label for="job">Jobs :</label>
+    <label>Jobs :</label>
     <input type="text" name="job" id="job" placeholder="">
 
-    <label for="autre">Autre (votre OS par exemple) :</label>
+    <label>Autre (votre OS par exemple) :</label>
     <input type="text" name="autre" id="autre" placeholder="">
 
-    <label for="expression">Expression libre :</label>
+    <label>Expression libre :</label>
     <input type="text" name="expression" id="expression" placeholder="">
 
 
-    <label for="news">Je veux être notifié des news du serveur </label>
-    <input type="checkbox">
+    <label>Je veux être notifié des news du serveur </label>
+    <input type="checkbox" name="news">
 
-    <label for="news">Je suis intéressé par du JDR grandeur nature </label>
-    <input type="checkbox">
+    <label>Je suis intéressé par du JDR grandeur nature </label>
+    <input type="checkbox" name="gn">
 
 
 							
 	<div>	
-
 	</div>
 							
 	<div id="submitButtons">	
@@ -113,7 +145,7 @@
 		<button type="submit" style="background-color:#169719;" name="submit" id="submit" onclick="Alert()"><b>Valider ✔</b></button>					
 	</div>
 
-	<span style="text-align:center;margin-top:5vh;font-size:14px;color:#990000;font-family:mono;"><b>Attention cet outil est en beta-test</b><br>
+	<span class="beta"><b>Attention cet outil est en beta-test</b><br>
     <a href="https://github.com/UnionRolistes/Web_Presentation" uk-icon="icon: github; ratio:1.5">GitHub</a></span>
 </form>
 

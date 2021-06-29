@@ -1,3 +1,9 @@
+- Changelog for v0.1.1 (2021-06-29)
+  
+    * Added a select menu for regions and age range
+    * Verify at least one of the 2 age field is filled
+    * Added some minor design features
+
 - Changelog for v0.1.0 (2021-06-29)
   
     * Create presentation page prototype
