@@ -1,0 +1,8 @@
+Design : 
+
+- Agencement des zones de textes des régions, les mettre sur la même ligne ?
+- Demander si c'est un choix de pas mettre les arrondis seulement dans le mode sombre
+- Un design sympa pour la checkbox de l'age
+
+Backend : 
+- Empêcher l'envoi si l'obligatoire n'est pas rempli, notamment si aucune des 2 zones d'age n'est saisie
