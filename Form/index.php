@@ -3,6 +3,9 @@ session_start();
 $regions=["Auvergne-Rhône-Alpes","Bourgogne-Franche-Comté","Bretagne","Centre-Val de Loire","Grand Est","Hauts-de-France",
 "Île-de-France","Normandie","Nouvelle-Aquitaine","Occitanie","Pays de la Loire","Provence-Alpes-Côte d'Azur","Corse","Belgique","Suisse",
 "Luxembourg","DOM TOM","Europe","Québec"]; 
+
+if (isset($_GET['webhook']))
+    $_SESSION['webhook'] = $_GET['webhook'];
 ?>
 
 <!DOCTYPE html>
@@ -24,8 +27,12 @@ $regions=["Auvergne-Rhône-Alpes","Bourgogne-Franche-Comté","Bretagne","Centre-
 
 <h1 class="titleCenter">Formulaire de présentation</h2>
 
-<!-- Connection area -->
-<form method=post action="cgi-bin/create_presentation.py" id="URform">
+
+<form method=post action="cgi/pres/create_presentation.py" id="URform">
+    <!-- Connection area -->
+    <input type=hidden name="webhook_url" value="<?= isset($_SESSION['webhook']) ? $_SESSION['webhook'] : "" ?>">
+    <input type=hidden name="user_id" value="<?= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ""?>">
+    <input type=hidden name="pseudo" value="<?= isset($_SESSION['pseudo']) ? $_SESSION['pseudo'] : ""?>">
 	<label>Connexion Discord <span class="rouge">*</span></label>
     <?php
         if (isset($_SESSION['avatar_url']) and isset($_SESSION['username'])) {

@@ -1,8 +1,7 @@
 // STORING AND RETRIEVING DATA //
 // Values of fields in the contact form are stored on change
-
 for (input of document.querySelectorAll("form input, form select")) {
-    if (input.type == "text" && input.name != "subject" || input.type == 'date') {
+    if (input.type == "text" && input.name != "subject" || input.type == 'date' || input.type == 'number') {
         if (localStorage.getItem(input.name))
             input.value = localStorage.getItem(input.name);
 
