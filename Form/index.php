@@ -25,7 +25,7 @@ $regions=["Auvergne-Rhône-Alpes","Bourgogne-Franche-Comté","Bretagne","Centre-
 <h1 class="titleCenter">Formulaire de présentation</h2>
 
 <!-- Connection area -->
-<form method=post action=# id="URform">
+<form method=post action="cgi-bin/create_presentation.py" id="URform">
 	<label>Connexion Discord <span class="rouge">*</span></label>
     <?php
         if (isset($_SESSION['avatar_url']) and isset($_SESSION['username'])) {
@@ -142,6 +142,7 @@ $regions=["Auvergne-Rhône-Alpes","Bourgogne-Franche-Comté","Bretagne","Centre-
 	<span class="beta"><b>Attention cet outil est en beta-test</b><br>
     <a href="https://github.com/UnionRolistes/Web_Presentation" uk-icon="icon: github; ratio:1.5">GitHub</a></span>
 </form>
+<script src="js/record_form.js"></script>
 
 
 
