@@ -23,7 +23,7 @@ def get_payload(_form: cgi.FieldStorage) -> str:
                     pseudo=f"<@{_form['user_id'].value}> [{_form['pseudo'].value}]",
                     region=_form['region'].value,
                     city=_form['ville'].value,
-                    age=_form['age'].value if _form['age'].value else _form['trancheAge'].value,
+                    age=_form['age'].value if _form.getvalue('age') else _form['trancheAge'].value,
                     experience=_form['experience'].value,
                     origin=_form['connaissance'].value,
                     hobby=_form['hobby'].value,
