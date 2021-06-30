@@ -20,7 +20,7 @@ if (isset($_GET['webhook']))
 
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/457233258661281793/458727800048713728/dae-cmd.png">
     <script src="js/age_switch.js" ></script>
-    <script src="js/mode_switch.js" ></script>
+    <script src="js/color_mode_switch.js" ></script>
     
 </head>
 <body>
