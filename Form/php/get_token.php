@@ -3,10 +3,8 @@ session_start();
 require('config.php');
 require('curl_utils.php');
 
-if (!isset($_GET['code'])) {
-    print("Perdu ? Vous n'êtes pas censé vous retrouver coincé ici. :( <small><br>(ou alors, les serveurs discord sont down)</small>");
-    die;
-}
+if (!isset($_GET['code']))
+    die("Perdu ? Vous n'êtes pas censé vous retrouver coincé ici. :( <small><br>(ou alors, les serveurs discord sont down)</small>");
 
 $params = array(
     "grant_type" => "authorization_code",
