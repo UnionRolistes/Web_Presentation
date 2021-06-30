@@ -28,8 +28,9 @@ $regions=["Auvergne-Rhône-Alpes","Bourgogne-Franche-Comté","Bretagne","Centre-
 <form method=post action=# id="URform">
     
 	<label>Connexion Discord <span class="rouge">*</span></label>
-    <input type="button" value="Me connecter" style="border-radius:10px;"/>
-
+    <div>
+        <input type="button" value="Me connecter" id="connexion"/>
+    </div>
 <?php
 
 /*input type="button" value="Connect" style="border-radius:10px;" onclick="window.location.href='<?=REDIRECT_URI.'?action=login'; ?>'"/>*/
@@ -49,7 +50,6 @@ if(isset($_SESSION['access_token'])){
             <span class="slider round"></span>
         </label>
     </div>
-
 
     <label>Région : <span class="rouge">*</span></label>
     <select name="region" id="region" required>
@@ -93,7 +93,7 @@ if(isset($_SESSION['access_token'])){
 
 
     <label>Comment avez-vous connu le serveur : <span class="rouge">*</span></label>
-    <input type="text" name="connaissance" placeholder="Ex : un ami, groupe Facebook" required/>                               
+    <input type="text" name="connaissance" placeholder="Ex : Association partenaire, groupe Facebook" required/>                               
 
     <label>Hobby :</label>
     <input type="text" name="hobby" id="hobby" placeholder="Lecture, jeux, ...">
@@ -128,7 +128,7 @@ if(isset($_SESSION['access_token'])){
     <input type="text" name="expression" id="expression" placeholder="">
 
 
-    <label>Je veux être notifié des news du serveur </label>
+    <label>Je veux être notifié des news autour du JDR </label>
     <input type="checkbox" name="news">
 
     <label>Je suis intéressé par du JDR grandeur nature </label>

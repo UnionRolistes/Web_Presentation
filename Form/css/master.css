@@ -37,7 +37,6 @@ body{
     padding: 1.2em;
     width: 48%;
   
-  
     border : 1px solid #000;
     margin-left: 25%;
     box-shadow: 5px 8px 6px black;
@@ -146,10 +145,12 @@ button{
 }
 
 
-#trancheAge{
-    width: 52%;
+#trancheAge, #age{
+    width: 53%;
     margin-left: 2%;
+    text-align: center;
 }
+
 
 .beta{
     text-align:center;
@@ -163,4 +164,7 @@ button{
     color: red;
 }
 
-/*Mettre les régions sur la meme ligne ?*/
+#connexion{
+    border-radius:5px;
+    background-color:rgb(207, 204, 204);
+}

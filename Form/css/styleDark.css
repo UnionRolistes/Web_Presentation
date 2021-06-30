@@ -24,12 +24,8 @@ input[type="text"] {
   text-align: center;
 }
 input[type="number"]{ /*Pour l'age. On veut une disposition permettant de caser la checkbox à côté */
-  width: 52%;
   background-color: #2C2F33;
   color: white;
-  -webkit-appearance: none;
-  text-align: center;
-  margin-left: 2%;
 }
 
 button {
@@ -40,6 +36,7 @@ option {
   color:white !important;
 }
 select{
+  width: 103%;
   border: 1px solid white;
   background-color: #2C2F33;
   color: white;

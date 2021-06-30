@@ -8,16 +8,16 @@ function Alert()
 	document.getElementById("alert").innerHTML="<div class='uk-alert-success' uk-alert > <a class='uk-alert-close' uk-close ></a> <p>Votre formulaire a bien été pris en compte.</p></div>"
 }
 
-function chgMode()
+function chgMode()//Change le Css Sombre <--> Clair
 {
 	if (document.getElementById("mode").innerHTML == "Clair ☀")
 	{
 		document.getElementById("mode").innerHTML = "Sombre 🌙";
-
 		var oldlink1 = document.getElementsByTagName("link").item(1);
 		var newlink1 =  document.createElement("link");
 		newlink1.setAttribute("rel", "stylesheet");
 		newlink1.setAttribute("href", "css/styleDark.css");
+
 		document.getElementsByTagName("head").item(0).replaceChild(newlink1, oldlink1);
 	}
 	else
@@ -51,6 +51,5 @@ function chgAgeDisplay(){ //Change la zone de saisie d'age en menu déroulant po
 
 		document.getElementById('age').style.display="initial";
 		document.getElementById('age').required = true;
-	}
-		
+	}	
 }

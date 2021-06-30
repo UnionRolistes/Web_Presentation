@@ -2,9 +2,10 @@ Design :
 
 - Demander si c'est un choix de pas mettre les arrondis seulement dans le mode sombre
 - Un design sympa pour la checkbox de l'age
+- Tester le responsive sur mobile
 
 Backend : 
 - Bouton de connexion discord à tester
 - Cocher la case d'age puis Reset reset seulement la checkbox, pas l'affichage Age/Tranche d'age :
 Rajouter onclick=[function] sur le bouton reset ne suffit pas, on dirait qu'il execute d'abord la fonction de decocher les cases
-Meme probleme avec la checkbox pour le mode Clair/Sombre. A voir si y'a un moyen d'exclure ces checkboxs du reset
+Meme probleme avec la checkbox pour le mode Clair/Sombre. A voir si y'a un moyen d'exclure ces checkboxes du reset
