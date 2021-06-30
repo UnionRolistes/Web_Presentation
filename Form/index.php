@@ -16,10 +16,11 @@ if (isset($_GET['webhook']))
     <title>Le formulaire de présentation</title>
 
     <link rel="stylesheet" href="css/master.css"> <!--Gère la disposition de la page-->
-    <link rel="stylesheet" href="css/styleDark.css"><!--Gère les couleurs-->
+    <link rel="stylesheet" href="css/styleDark.css"><!--Gère les couleurs, affichage sombre par défaut-->
 
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/457233258661281793/458727800048713728/dae-cmd.png">
-    <script src="js/script.js" ></script>
+    <script src="js/age_switch.js" ></script>
+    <script src="js/mode_switch.js" ></script>
     
 </head>
 <body>
@@ -41,7 +42,7 @@ if (isset($_GET['webhook']))
             echo $_SESSION['username'];
             echo '</div>';
         } else
-            echo '<input type="button" value="Me connecter" id="connexion" onclick="window.location.href=\'php/get_authorization_code.php\'"/>'
+            echo '<div><input type="button" value="Me connecter" id="connexion" onclick="window.location.href=\'php/get_authorization_code.php\'"/></div>'
     ?>
 
     <label id="mode">Sombre 🌙</label>					
@@ -90,11 +91,11 @@ if (isset($_GET['webhook']))
 
 
 	<label>Ancienneté dans le JDR :</label>
-    <input type="text" name="experience" placeholder="Ex : 3 ans"/>
+    <input type="text" name="experience" placeholder="3 ans, initié, ..."/>
 
 
     <label>Comment avez-vous connu le serveur : <span class="rouge">*</span></label>
-    <input type="text" name="connaissance" placeholder="Ex : Association partenaire, groupe Facebook" required/>                               
+    <input type="text" name="connaissance" placeholder="Association partenaire, groupe Facebook, ..." required/>                               
 
     <label>Hobby :</label>
     <input type="text" name="hobby" id="hobby" placeholder="Lecture, jeux, ...">
