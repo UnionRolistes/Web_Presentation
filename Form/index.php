@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $regions=["Auvergne-Rhône-Alpes","Bourgogne-Franche-Comté","Bretagne","Centre-Val de Loire","Grand Est","Hauts-de-France",
 "Île-de-France","Normandie","Nouvelle-Aquitaine","Occitanie","Pays de la Loire","Provence-Alpes-Côte d'Azur","Corse","Belgique","Suisse",
 "Luxembourg","DOM TOM","Europe","Québec"]; 
@@ -24,24 +24,18 @@ $regions=["Auvergne-Rhône-Alpes","Bourgogne-Franche-Comté","Bretagne","Centre-
 
 <h1 class="titleCenter">Formulaire de présentation</h2>
 
-
+<!-- Connection area -->
 <form method=post action=# id="URform">
-    
 	<label>Connexion Discord <span class="rouge">*</span></label>
-    <div>
-        <input type="button" value="Me connecter" id="connexion"/>
-    </div>
-<?php
-
-/*input type="button" value="Connect" style="border-radius:10px;" onclick="window.location.href='<?=REDIRECT_URI.'?action=login'; ?>'"/>*/
-/* DEMANDER nouvelle organisation du code à Lyss
-if(isset($_SESSION['access_token'])){
-			echo "<img src='$avatar_url'/>";
-			echo $pseudo;
-}else{ 
-	<input type="button" value="Connect" style="border-radius:10px;" onclick="window.location.href='<?php echo REDIRECT_URI . '?action=login'; ?>'"/>
- } */?>
-		
+    <?php
+        if (isset($_SESSION['avatar_url']) and isset($_SESSION['username'])) {
+            echo '<div>';
+            echo "<img src=\"" . $_SESSION['avatar_url'] . "\"/>";      
+            echo $_SESSION['username'];
+            echo '</div>';
+        } else
+            echo '<input type="button" value="Me connecter" id="connexion" onclick="window.location.href=\'php/get_authorization_code.php\'"/>'
+    ?>
 
     <label id="mode">Sombre 🌙</label>					
     <div>
