@@ -2,7 +2,7 @@
 `NOUVELLE PRÉSENTATION`
 `*********************`
 **Pseudo :**  {pseudo}
-**Domicile **  {region} - {city}
+**Domicile **  {home}
 **Age :**  {age}
 **Ancienneté dans le JdR :**  {experience}
 **Comment avez vous connu le serveur :**  {origin}
@@ -15,5 +15,4 @@
 **Jobs**  {jobs}
 **Autre** (votre OS par exemple)  {other}
 **Expression Libre:**  {free_expression}
-**News :**  {news}
-**GN :**  {gn}
+{checks}
