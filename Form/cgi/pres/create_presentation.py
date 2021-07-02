@@ -44,15 +44,17 @@ def get_payload(form: cgi.FieldStorage) -> str:
     with open("pres_template.txt", 'r', encoding='utf-8') as f:
         for line in f:
             is_empty = True
+            is_field = False
             # checks line is not a comment
             if not re.match(" *#", line):
                 for match in re.finditer("{([A-Za-z0-9_]*)}", line):
+                    is_field = True
                     key = match.group(1)
                     if key in kwargs and kwargs[key]:
                         is_empty = False
                         break
 
-                if not is_empty:
+                if not is_empty or not is_field:
                     res += line.format(**kwargs)
     return res
 
@@ -76,6 +78,7 @@ def main():
         print("Status: 303 See other")
         print("Location: http://93.11.4.50.nip.io")
         print()
+
 
 if __name__ == '__main__':
     main()
