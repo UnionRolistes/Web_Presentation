@@ -10,4 +10,3 @@ Rajouter onclick=[function] sur le bouton reset ne suffit pas, on dirait qu'il e
 Meme probleme avec la checkbox pour le mode Clair/Sombre. A voir si y'a un moyen d'exclure ces checkboxes du reset
 
 À ajouter:
-- Bouton déconnexion ou changer de compte

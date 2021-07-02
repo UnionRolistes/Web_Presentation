@@ -38,8 +38,9 @@ if (isset($_GET['webhook']))
     <?php
         if (isset($_SESSION['avatar_url']) and isset($_SESSION['username'])) {
             echo '<div>';
-            echo "<img src=\"" . $_SESSION['avatar_url'] . "\"/>";      
+            echo "<img id='username' src=\"". $_SESSION['avatar_url']."\"/>";      
             echo $_SESSION['username'];
+            echo '<input type="button" value="Deconnexion" id="deconnexion" onclick="window.location.href=\'php/logout.php\'"/>';
             echo '</div>';
         } else
             echo '<div><input type="button" value="Me connecter" id="connexion" onclick="window.location.href=\'php/get_authorization_code.php\'"/></div>'
@@ -103,8 +104,8 @@ if (isset($_GET['webhook']))
 
     <label>MJ/PJ :</label>
     <div>
-        <input type="radio" name="typeJoueur" id="MJ" value="MJ">MJ&nbsp&nbsp&nbsp
-        <input type="radio" name="typeJoueur" id="PJ" value="PJ">PJ
+        <input type="checkbox" name="typeJoueur" id="MJ" value="MJ">MJ&nbsp&nbsp&nbsp
+        <input type="checkbox" name="typeJoueur" id="PJ" value="PJ">PJ
     </div>
 
     <label>JDR 🎲: <span class="rouge">*</span></label>

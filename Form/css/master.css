@@ -164,7 +164,10 @@ button{
     color: red;
 }
 
-#connexion{
+#connexion, #deconnexion{
     border-radius:5px;
     background-color:rgb(207, 204, 204);
+}
+#username{ /*Pour espacer l'username et le bouton de deconnexion */
+  margin-right: 5%;
 }
