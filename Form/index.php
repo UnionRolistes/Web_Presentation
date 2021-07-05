@@ -34,6 +34,13 @@ $tranches = $xml->tranche;
 
 <h1 class="titleCenter">Formulaire de présentation</h2>
 
+<?php
+if (isset($_GET['error'])){ 
+//Affichage des erreurs. Rajouter des lignes si on rajoute d'autres codes d'erreurs (optimisable en les mettant dans un fichier si on commence à en avoir beaucoup)
+    $error=$_GET['error'];
+    if($error=='invalidData') echo 'Données invalides. Veuillez vérifier le formulaire';
+} 
+?>
 
 <form method=post action="cgi/pres/create_presentation.py" id="URform" onsubmit="alert('Votre présentation a bien été envoyée')">
     <!-- Connection area -->
@@ -79,7 +86,7 @@ $tranches = $xml->tranche;
     <fieldset>
         <legend>Age : <span class="rouge">*</span></legend>
         <label><input type="checkbox" id="checkAge" onclick="chgAgeDisplay()"> Indiquer une tranche d'âge à la place </label>
-        <label><input type="number" name="age" id="age" min="1" required></label>
+        <label><input type="number" name="age" id="age" min="1" max="150" required></label>
 
         <select name="trancheAge" id="trancheAge" style="display: none">
             <option value="" selected>--Choisir--</option>
