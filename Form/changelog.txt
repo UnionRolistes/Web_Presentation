@@ -1,3 +1,7 @@
+- Changelog for v0.2.1 (2021-07-05)
+    * Disable the submit button if the user isn't connected
+    * Minor design changes (more vertical space between text inputs)
+
 - Changelog for v0.2.0 (2021-07-02)
     * Changed MJ/PJ buttons to checkboxes
     * Added a button to logout from discord

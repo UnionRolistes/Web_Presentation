@@ -29,7 +29,7 @@ if (isset($_GET['webhook']))
 <h1 class="titleCenter">Formulaire de présentation</h2>
 
 
-<form method=post action="cgi/pres/create_presentation.py" id="URform">
+<form method=post action="cgi/pres/create_presentation.py" id="URform" onsubmit="alert('Votre présentation a bien été envoyée')">
     <!-- Connection area -->
     <input type=hidden name="webhook_url" value="<?= isset($_SESSION['webhook']) ? $_SESSION['webhook'] : "" ?>">
     <input type=hidden name="user_id" value="<?= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ""?>">
@@ -145,7 +145,8 @@ if (isset($_GET['webhook']))
 	<div id="submitButtons">	
         <button type="reset">Réinitialiser 🔄</button>	
         <br><br>			
-		<button type="submit" style="background-color:#169719;" name="submit" id="submit" onclick="Alert()"><b>Valider ✔</b></button>					
+        <button type="submit" name="submit" id="submit" <?php if (!isset($_SESSION['avatar_url']) and !isset($_SESSION['username'])){echo 'disabled ><b>Veuillez vous connecter';}else{ echo 'style="background-color:#169719;"'?>><b>Valider ✔<?php }?></b></button>					
+        <!--Bloque le bouton si on s'est pas connecté-->				
 	</div>
 
 	<span class="beta"><b>Attention cet outil est en beta-test</b><br>
