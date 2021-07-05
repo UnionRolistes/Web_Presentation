@@ -1,11 +1,17 @@
 <?php
 session_start();
-$regions=["Auvergne-Rhône-Alpes","Bourgogne-Franche-Comté","Bretagne","Centre-Val de Loire","Grand Est","Hauts-de-France",
-"Île-de-France","Normandie","Nouvelle-Aquitaine","Occitanie","Pays de la Loire","Provence-Alpes-Côte d'Azur","Corse","Belgique","Suisse",
-"Luxembourg","DOM TOM","Europe","Québec"]; 
 
 if (isset($_GET['webhook']))
     $_SESSION['webhook'] = $_GET['webhook'];
+
+
+$xml = simplexml_load_file('data/regions.xml'); 
+$regions = $xml->region;
+//Récupère la liste des régions depuis le xml
+
+$xml = simplexml_load_file('data/tranchesAge.xml'); 
+$tranches = $xml->tranche;
+//Récupère les tranches d'ages depuis le xml
 ?>
 
 <!DOCTYPE html>
@@ -54,12 +60,12 @@ if (isset($_GET['webhook']))
         </label>
     </div>
 
+
     <label>Région : <span class="rouge">*</span></label>
     <select name="region" id="region" required>
             <option value="" selected>--Choisir--</option>
 
-        <?php foreach ($regions as $i => $region) { ?>
-            
+        <?php foreach ($regions as $i => $region) { ?>         
             <option value="<?=$region?>"><?=$region?></option>
         <?php } ?>           
     </select>
@@ -77,15 +83,10 @@ if (isset($_GET['webhook']))
 
         <select name="trancheAge" id="trancheAge" style="display: none">
             <option value="" selected>--Choisir--</option>
-            <option value="Mineur -15 ans">Mineur -15 ans</option>
-            <option value="Mineur +15 ans">Mineur +15 ans</option>
-            <option value="18/20">18/20 ans</option>
 
-            <?php for ($i=2; $i <=7 ; $i++) { ?>
-                <option value="<?=$i.'0/'.($i+1).'0'?>"><?=$i.'0/'.($i+1).'0 ans'?></option>
-            
-            <?php } ?>
-            <option value="+80">+80 ans</option>
+            <?php foreach ($tranches as $tranche) { ?>         
+            <option value="<?=$tranche?>"><?=$tranche?> ans</option>
+            <?php } ?> 
 
         </select>
     </fieldset>
