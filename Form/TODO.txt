@@ -1,0 +1,15 @@
+Design : 
+
+- Demander si c'est un choix de pas mettre les arrondis seulement dans le mode sombre (c'est comme ça sur le site en ligne)
+- Idée de design sympa pour la checkbox de l'age ?
+- Tester le responsive sur mobile (Faire prendre toute la place au formulaire si l'écran devient petit)
+
+Backend : 
+- Bug : Cocher la case d'age puis Reset reset seulement la checkbox, pas l'affichage Age/Tranche d'age :
+Rajouter onclick=[function] sur le bouton reset ne suffit pas, on dirait qu'il execute d'abord la fonction JS avant de decocher les cases
+Meme probleme avec la checkbox pour le mode Clair/Sombre. A voir si y'a un moyen d'exclure ces checkboxes du reset
+- Personnaliser le lien de renvoi d'erreur dans create_presentation.py avant de mettre en ligne
+
+
+À ajouter:
+- Gérer le cas où l'utilisateur annule l'oauth2
