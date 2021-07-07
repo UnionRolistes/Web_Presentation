@@ -1,4 +1,4 @@
-#!python
+#!/opt/virtualenv/URBot/bin/python
 import re
 import sys
 
