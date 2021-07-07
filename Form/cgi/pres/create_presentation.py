@@ -27,7 +27,7 @@ def verify_data(form: cgi.FieldStorage) -> str:
         return False
 
     if form.getvalue('age') != "":
-        age = form.getvalue('age')
+        age = int(form.getvalue('age'))
         if not(age.isnumeric()) or age <= 0 or age > 150:
             return False
     else:
