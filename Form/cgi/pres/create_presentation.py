@@ -19,6 +19,7 @@ cgitb.enable(display=1)
 
 # Verification des données :
 def verify_data(form: cgi.FieldStorage) -> str:
+    return True
     # Verification des champs obligatoires :
     if form.getvalue('region') == "" or form.getvalue('connaissance') == "" or form.getvalue('JDR') == "":
         return False
