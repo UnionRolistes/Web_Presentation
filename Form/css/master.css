@@ -4,27 +4,27 @@ Pour les couleurs de chaque thème, voir styleDark et styleLight*/
 
 /*Police et taille d'écriture : */
 html {
-    /* 1 */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 1.5;
-    /* 2 */
-    -webkit-text-size-adjust: 100%;
-    /* 3 */
-    background: #fff;
-    color: #666;
+  /* 1 */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.5;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 3 */
+  background: #fff;
+  color: #666;
 }
 
 
 
 body{
-  margin: 0;
-  padding: 20px;
-  overflow: auto;
+margin: 0;
+padding: 20px;
+overflow: auto;
 }
 .titleCenter{
-  text-align: center;
+text-align: center;
 }
 
 
@@ -45,8 +45,8 @@ body{
 /*Liste des éléments qui doivent s'afficher à gauche :*/
 #URform > label,
 #URform > fieldset  {
-    grid-column: labels;
-    grid-row: auto;
+  grid-column: labels;
+  grid-row: auto;
 }
 
 /*Liste des éléments qui doivent s'afficher à droite :*/
@@ -54,118 +54,118 @@ body{
 #URform > select,
 #URform > textarea,
 #URform > button {
-    grid-column: controls;
-    grid-row: auto;
-    padding: .4em;
+  grid-column: controls;
+  grid-row: auto;
+  padding: .4em;
 }
 #URform > fieldset {
-    grid-column: span 2;
+  grid-column: span 2;
 }  
-  
+
 #URform > textarea {
-    min-height: 3em;
+  min-height: 3em;
 }
 
 
 input[type="radio"] {
-  margin: 0 0px 0 10px;
+margin: 0 0px 0 10px;
 }
 
 
-  
+
 /* Switch et slider : */
 
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  margin-right: 20px;
-  transition: 0.2s ease-in-out;
-  transition-property: color, background-color, border;
+position: relative;
+display: inline-block;
+width: 60px;
+height: 34px;
+margin-right: 20px;
+transition: 0.2s ease-in-out;
+transition-property: color, background-color, border;
 }
 
 
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+-webkit-transition: .4s;
+transition: .4s;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+position: absolute;
+content: "";
+height: 26px;
+width: 26px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+-webkit-transition: .4s;
+transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+background-color: #2196F3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+box-shadow: 0 0 1px #2196F3;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+-webkit-transform: translateX(26px);
+-ms-transform: translateX(26px);
+transform: translateX(26px);
 }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 34px;
+border-radius: 34px;
 }
 
 .slider.round:before {
-  border-radius: 50%;
+border-radius: 50%;
 }
 
 
 /*Other :*/
 
 button{
-    width: 100%;
-    height: 40%;
-    border-radius: 5px !important;
-    background-color: transparent;
-  
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    -webkit-text-size-adjust: 100%;
-    font-weight: normal;
-    line-height: 1.5;
+  width: 100%;
+  height: 40%;
+  border-radius: 5px !important;
+  background-color: transparent;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  -webkit-text-size-adjust: 100%;
+  font-weight: normal;
+  line-height: 1.5;
 }
 
 
 #trancheAge, #age{
-    width: 53%;
-    margin-left: 2%;
-    text-align: center;
+  width: 53%;
+  margin-left: 2%;
+  text-align: center;
 }
 
 
 .beta{
-    text-align:center;
-    margin-top:5vh;
-    font-size:14px;
-    color:#990000;
-    font-family:mono;
+  text-align:center;
+  margin-top:5vh;
+  font-size:14px;
+  color:#990000;
+  font-family:mono;
 }
 
 .rouge{
-    color: red;
+  color: red;
 }
 
 #connexion, #deconnexion{
@@ -174,7 +174,7 @@ button{
     height: 27px;
 }
 #username{ /*Pour espacer l'username et le bouton de deconnexion */
-  margin-right: 5%;
+margin-right: 5%;
 }
 #deconnexion{
 margin-left: 4%;

@@ -1,4 +1,4 @@
-#!python
+#!/opt/virtualenv/URBot/bin/python
 import re
 import sys
 
@@ -12,7 +12,7 @@ from importlib import resources
 import xml.etree.ElementTree as ET # Fonctions pour lire un xml
 
 # Logging
-cgitb.enable(display=0, logdir="d:/wamp64/logs/cgi")
+cgitb.enable(display=0, logdir="/usr/local/log/cgi")
 # Getting form data
 # form = cgi.FieldStorage()
 
@@ -53,7 +53,7 @@ def get_payload(form: cgi.FieldStorage) -> str:
     """ Process form data to create webhook payload. """
 
     if not verify_data(form): # Si les données sont invalides :
-        print("Location: http://93.11.4.50.nip.io?error=invalidData") # Lien à personnaliser avant la mise en ligne ( ../../index.php en lien local)
+        print("Location: http://presentation.unionrolistes.fr?error=invalidData") # Lien à personnaliser avant la mise en ligne ( ../../index.php en lien local)
     else:
         res = ""
         checks = []
@@ -80,20 +80,22 @@ def get_payload(form: cgi.FieldStorage) -> str:
             'checks': "  **|**  ".join(checks)
         }
 
-        with open("pres_template.txt", 'r', encoding='utf-8') as f:
-            for line in f:
-                is_empty = True
-                # checks line is not a comment
-                if not re.match(" *#", line):
-                    for match in re.finditer("{([A-Za-z0-9_]*)}", line):
-                        key = match.group(1)
-                        if key in kwargs and kwargs[key]:
-                            is_empty = False
-                            break
+    with open("pres_template.txt", 'r', encoding='utf-8') as f:
+        for line in f:
+            is_empty = True
+            is_field = False
+            # checks line is not a comment
+            if not re.match(" *#", line):
+                for match in re.finditer("{([A-Za-z0-9_]*)}", line):
+                    is_field = True
+                    key = match.group(1)
+                    if key in kwargs and kwargs[key]:
+                        is_empty = False
+                        break
 
-                    if not is_empty:
-                        res += line.format(**kwargs)
-        return res
+                if not is_empty or not is_field:
+                    res += line.format(**kwargs)
+    return res
 
 
 def get_webhook_url(_form: cgi.FieldStorage) -> str:
@@ -113,7 +115,7 @@ def main():
     else:
         # Redirects to main page
         print("Status: 303 See other")
-        print("Location: http://93.11.4.50.nip.io")
+        print("Location: http://presentation.unionrolistes.fr")
         print()
 
 if __name__ == '__main__':

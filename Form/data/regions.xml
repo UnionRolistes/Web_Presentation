@@ -12,12 +12,16 @@
     <region>Occitanie</region>
     <region>Pays de la Loire</region>
     <region>Provence-Alpes-Côte d'Azur</region>
-    
-    <region>Belgique</region>
-    <region>Corse</region> 
+    <region>Corse</region>
+    <region>Guadeloupe</region>
+    <region>Guyane</region>
+    <region>La Réunion</region>
+    <region>Martinique</region>
+    <region>Mayotte</region>
+
+    <region>Belgique</region> 
     <region>Suisse</region>
     <region>Luxembourg</region>
-    <region>DOM TOM</region>
     <region>Europe</region>
     <region>Québec</region>
 </regions>
