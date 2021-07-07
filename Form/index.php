@@ -111,9 +111,9 @@ if (isset($_GET['error'])){
     <input type="text" name="hobby" id="hobby" placeholder="Lecture, jeux, ...">
 
 
-    <label>MJ/PJ :</label>
+    <label>MJ/PJ : <span class="rouge">*</span></label>
     <div>
-        <input type="checkbox" name="typeJoueur" id="MJ" value="MJ">MJ&nbsp&nbsp&nbsp
+        <input type="checkbox" name="typeJoueur" id="MJ" value="MJ" required>MJ&nbsp&nbsp&nbsp
         <input type="checkbox" name="typeJoueur" id="PJ" value="PJ">PJ
     </div>
 

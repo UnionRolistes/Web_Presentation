@@ -12,7 +12,7 @@ from importlib import resources
 import xml.etree.ElementTree as ET # Fonctions pour lire un xml
 
 # Logging
-cgitb.enable(display=0, logdir="/usr/local/log/cgi")
+cgitb.enable(display=1)
 # Getting form data
 # form = cgi.FieldStorage()
 
