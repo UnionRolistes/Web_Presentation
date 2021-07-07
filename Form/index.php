@@ -24,7 +24,7 @@ $tranches = $xml->tranche;
     <link rel="stylesheet" href="css/master.css"> <!--Gère la disposition de la page-->
     <link rel="stylesheet" href="css/styleDark.css"><!--Gère les couleurs, affichage sombre par défaut-->
 
-    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/457233258661281793/458727800048713728/dae-cmd.png">
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/652207549168484352/862019020516622377/ur.png">
     <script src="js/age_switch.js" ></script>
     <script src="js/color_mode_switch.js" ></script>
     
@@ -39,6 +39,7 @@ if (isset($_GET['error'])){
 //Affichage des erreurs. Rajouter des lignes si on rajoute d'autres codes d'erreurs (optimisable en les mettant dans un fichier si on commence à en avoir beaucoup)
     $error=$_GET['error'];
     if($error=='invalidData') echo 'Données invalides. Veuillez vérifier le formulaire';
+    if($error=='isPosted') echo 'Votre présentation a bien été postée'; //--> Pas encore fonctionnel côté Python
 } 
 ?>
 

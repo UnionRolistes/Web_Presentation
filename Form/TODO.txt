@@ -12,3 +12,5 @@ Meme probleme avec la checkbox pour le mode Clair/Sombre. A voir si y'a un moyen
 
 À ajouter:
 - Gérer le cas où l'utilisateur annule l'oauth2
+- Quand le message est bien envoyé vers Discord, renvoyer l'info à la page Web pour alert l'utilisateur que tout s'est bien passé 
+(faisable en passant un paramètre dans l'Url, comme pour les erreurs)
