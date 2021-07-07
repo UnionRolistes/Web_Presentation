@@ -27,6 +27,7 @@ $tranches = $xml->tranche;
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/652207549168484352/862019020516622377/ur.png">
     <script src="js/age_switch.js" ></script>
     <script src="js/color_mode_switch.js" ></script>
+    <script src="js/requireMJ.js" ></script>
     
 </head>
 <body>
@@ -113,8 +114,8 @@ if (isset($_GET['error'])){
 
     <label>MJ/PJ : <span class="rouge">*</span></label>
     <div>
-        <input type="checkbox" name="typeJoueur" id="MJ" value="MJ" required>MJ&nbsp&nbsp&nbsp
-        <input type="checkbox" name="typeJoueur" id="PJ" value="PJ">PJ
+        <input type="checkbox" name="typeJoueur" id="MJ" value="MJ" required onclick="chgMjRequire()">MJ&nbsp&nbsp&nbsp
+        <input type="checkbox" name="typeJoueur" id="PJ" value="PJ" onclick="chgMjRequire()">PJ
     </div>
 
     <label>JDR 🎲: <span class="rouge">*</span></label>
