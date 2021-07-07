@@ -1,11 +1,17 @@
 <?php
 session_start();
-$regions=["Auvergne-Rhône-Alpes","Bourgogne-Franche-Comté","Bretagne","Centre-Val de Loire","Grand Est","Hauts-de-France",
-"Île-de-France","Normandie","Nouvelle-Aquitaine","Occitanie","Pays de la Loire","Provence-Alpes-Côte d'Azur","Corse","Belgique","Suisse",
-"Luxembourg","DOM TOM","Europe","Québec"]; 
 
 if (isset($_GET['webhook']))
     $_SESSION['webhook'] = $_GET['webhook'];
+
+
+$xml = simplexml_load_file('data/regions.xml'); 
+$regions = $xml->region;
+//Récupère la liste des régions depuis le xml
+
+$xml = simplexml_load_file('data/tranchesAge.xml'); 
+$tranches = $xml->tranche;
+//Récupère les tranches d'ages depuis le xml
 ?>
 
 <!DOCTYPE html>
@@ -28,8 +34,15 @@ if (isset($_GET['webhook']))
 
 <h1 class="titleCenter">Formulaire de présentation</h2>
 
+<?php
+if (isset($_GET['error'])){ 
+//Affichage des erreurs. Rajouter des lignes si on rajoute d'autres codes d'erreurs (optimisable en les mettant dans un fichier si on commence à en avoir beaucoup)
+    $error=$_GET['error'];
+    if($error=='invalidData') echo 'Données invalides. Veuillez vérifier le formulaire';
+} 
+?>
 
-<form method=post action="cgi/pres/create_presentation.py" id="URform">
+<form method=post action="cgi/pres/create_presentation.py" id="URform" onsubmit="alert('Votre présentation a bien été envoyée')">
     <!-- Connection area -->
     <input type=hidden name="webhook_url" value="<?= isset($_SESSION['webhook']) ? $_SESSION['webhook'] : "" ?>">
     <input type=hidden name="user_id" value="<?= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ""?>">
@@ -54,12 +67,12 @@ if (isset($_GET['webhook']))
         </label>
     </div>
 
+
     <label>Région : <span class="rouge">*</span></label>
     <select name="region" id="region" required>
             <option value="" selected>--Choisir--</option>
 
-        <?php foreach ($regions as $i => $region) { ?>
-            
+        <?php foreach ($regions as $i => $region) { ?>         
             <option value="<?=$region?>"><?=$region?></option>
         <?php } ?>           
     </select>
@@ -73,19 +86,14 @@ if (isset($_GET['webhook']))
     <fieldset>
         <legend>Age : <span class="rouge">*</span></legend>
         <label><input type="checkbox" id="checkAge" onclick="chgAgeDisplay()"> Indiquer une tranche d'âge à la place </label>
-        <label><input type="number" name="age" id="age" min="1" required></label>
+        <label><input type="number" name="age" id="age" min="1" max="150" required></label>
 
         <select name="trancheAge" id="trancheAge" style="display: none">
             <option value="" selected>--Choisir--</option>
-            <option value="Mineur -15 ans">Mineur -15 ans</option>
-            <option value="Mineur +15 ans">Mineur +15 ans</option>
-            <option value="18/20">18/20 ans</option>
 
-            <?php for ($i=2; $i <=7 ; $i++) { ?>
-                <option value="<?=$i.'0/'.($i+1).'0'?>"><?=$i.'0/'.($i+1).'0 ans'?></option>
-            
-            <?php } ?>
-            <option value="+80">+80 ans</option>
+            <?php foreach ($tranches as $tranche) { ?>         
+            <option value="<?=$tranche?>"><?=$tranche?> ans</option>
+            <?php } ?> 
 
         </select>
     </fieldset>
@@ -145,7 +153,8 @@ if (isset($_GET['webhook']))
 	<div id="submitButtons">	
         <button type="reset">Réinitialiser 🔄</button>	
         <br><br>			
-		<button type="submit" style="background-color:#169719;" name="submit" id="submit" onclick="Alert()"><b>Valider ✔</b></button>					
+        <button type="submit" name="submit" id="submit" <?php if (!isset($_SESSION['avatar_url']) and !isset($_SESSION['username'])){echo 'disabled ><b>Veuillez vous connecter';}else{ echo 'style="background-color:#169719;"'?>><b>Valider ✔<?php }?></b></button>					
+        <!--Bloque le bouton si on s'est pas connecté-->				
 	</div>
 
 	<span class="beta"><b>Attention cet outil est en beta-test</b><br>
