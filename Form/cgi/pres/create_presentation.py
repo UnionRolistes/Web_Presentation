@@ -53,7 +53,7 @@ def get_payload(form: cgi.FieldStorage) -> str:
     """ Process form data to create webhook payload. """
 
     if not verify_data(form): # Si les données sont invalides :
-        print("Location: http://93.11.4.50.nip.io?error=invalidData") # Lien à personnaliser avant la mise en ligne ( ../../index.php en lien local)
+        print("Location: http://presentation.unionrolistes.fr?error=invalidData") # Lien à personnaliser avant la mise en ligne ( ../../index.php en lien local)
     else:
         res = ""
         checks = []
@@ -115,7 +115,7 @@ def main():
     else:
         # Redirects to main page
         print("Status: 303 See other")
-        print("Location: http://93.11.4.50.nip.io")
+        print("Location: http://presentation.unionrolistes.fr")
         print()
 
 if __name__ == '__main__':

@@ -1,5 +1,4 @@
 Design : 
-
 - Demander si c'est un choix de pas mettre les arrondis seulement dans le mode sombre (c'est comme ça sur le site en ligne)
 - Idée de design sympa pour la checkbox de l'age ?
 - Tester le responsive sur mobile (Faire prendre toute la place au formulaire si l'écran devient petit)
