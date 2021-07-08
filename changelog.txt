@@ -1,0 +1,38 @@
+- Changelog for v0.3.1 (2021-07-08)
+    * Fixed the MJ/PJ display bug in the message
+    * Expanding the size and saving the "Expression libre" input
+    * Changing input background color
+
+- Changelog for v0.3.0 (2021-07-07)
+    * Prevents sending if at least MJ or PJ isn't checked  
+    * Fixed some details before launching online
+    * Changed website logo
+
+- Changelog for v0.2.1 (2021-07-05)
+    * Disable the submit button if the user isn't connected
+    * Minor design changes (more vertical space between text inputs)
+
+- Changelog for v0.2.0 (2021-07-02)
+    * Changed MJ/PJ buttons to checkboxes
+    * Added a button to logout from discord
+
+
+- Changelog for v0.2.0 (2021-06-30)
+
+    * Added oauth2 connection
+    * Separated JS scripts
+    * Added minor design features
+
+- Changelog for v0.1.2 (2021-06-30)
+
+    * Added some minor design changes
+
+- Changelog for v0.1.1 (2021-06-29)
+  
+    * Added a select menu for regions and age range
+    * Verify at least one of the 2 age field is filled
+    * Added some minor design features
+
+- Changelog for v0.1.0 (2021-06-29)
+  
+    * Create presentation page prototype

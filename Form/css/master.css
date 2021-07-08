@@ -17,7 +17,6 @@ html {
 }
 
 
-
 body{
 margin: 0;
 padding: 20px;
@@ -38,7 +37,7 @@ text-align: center;
     width: 50%; /*Taille horizontale du formulaire*/
   
     border : 1px solid #000;
-    margin-left: 23%; /*Distance du formulaire par rapport au bords de la fenêtre*/
+    margin-left: 23%; /*Distance du formulaire par rapport au bord de la fenêtre*/
     box-shadow: 5px 8px 6px black;
 }
 
@@ -64,11 +63,6 @@ text-align: center;
 
 #URform > textarea {
   min-height: 3em;
-}
-
-
-input[type="radio"] {
-margin: 0 0px 0 10px;
 }
 
 
@@ -167,14 +161,14 @@ button{
 .rouge{
   color: red;
 }
+.vert{
+  color: rgb(25, 219, 25);
+}
 
 #connexion, #deconnexion{
     border-radius:5px;
     background-color:rgb(207, 204, 204);
     height: 27px;
-}
-#username{ /*Pour espacer l'username et le bouton de deconnexion */
-margin-right: 5%;
 }
 #deconnexion{
 margin-left: 4%;
@@ -184,5 +178,9 @@ button:disabled,
 button[disabled]{
   border: 1px solid #999999;
   background-color: #cccccc;
-  color: #666666;
+  color: white;
+}
+
+textarea{
+  width:100%;
 }

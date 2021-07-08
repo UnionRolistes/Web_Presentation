@@ -19,7 +19,7 @@ $tranches = $xml->tranche;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Le formulaire de présentation</title>
+    <title>Présentation</title>
 
     <link rel="stylesheet" href="css/master.css"> <!--Gère la disposition de la page-->
     <link rel="stylesheet" href="css/styleDark.css"><!--Gère les couleurs, affichage sombre par défaut-->
@@ -35,16 +35,18 @@ $tranches = $xml->tranche;
 
 <h1 class="titleCenter">Formulaire de présentation</h2>
 
-<?php
-if (isset($_GET['error'])){ 
-//Affichage des erreurs. Rajouter des lignes si on rajoute d'autres codes d'erreurs (optimisable en les mettant dans un fichier si on commence à en avoir beaucoup)
-    $error=$_GET['error'];
-    if($error=='invalidData') echo 'Données invalides. Veuillez vérifier le formulaire';
-    if($error=='isPosted') echo 'Votre présentation a bien été postée'; //--> Pas encore fonctionnel côté Python
-} 
-?>
 
-<form method=post action="cgi/pres/create_presentation.py" id="URform" onsubmit="alert('Votre présentation a bien été envoyée')">
+<form method=post action="cgi/pres/create_presentation.py" name="URform" id="URform" onsubmit="alert('Présentation validée ! Envoi en cours')">
+
+    <?php
+    if (isset($_GET['error'])){ 
+    //Affichage des erreurs. Rajouter des lignes si on rajoute d'autres codes d'erreurs (optimisable en les mettant dans un fichier si on commence à en avoir beaucoup)
+        $error=$_GET['error'];
+        if($error=='invalidData') echo '<span class="rouge">Données invalides. Veuillez vérifier le formulaire</span>';
+        if($error=='isPosted') echo '<span class="vert">Votre présentation a bien été postée</span>'; //--> Pas encore fonctionnel côté Python
+    } 
+    ?>
+
     <!-- Connection area -->
     <input type=hidden name="webhook_url" value="<?= isset($_SESSION['webhook']) ? $_SESSION['webhook'] : "" ?>">
     <input type=hidden name="user_id" value="<?= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ""?>">
@@ -113,9 +115,9 @@ if (isset($_GET['error'])){
 
 
     <label>MJ/PJ : <span class="rouge">*</span></label>
-    <div>
-        <input type="checkbox" name="typeJoueur" id="MJ" value="MJ" required onclick="chgMjRequire()">MJ&nbsp&nbsp&nbsp
-        <input type="checkbox" name="typeJoueur" id="PJ" value="PJ" onclick="chgMjRequire()">PJ
+    <div id="checkboxesMJ">
+        <input type="checkbox" name="MJ" id="MJ" value="MJ" required onclick="chgMjRequire()">MJ&nbsp&nbsp&nbsp
+        <input type="checkbox" name="PJ" id="PJ" value="PJ" onclick="chgMjRequire()">PJ
     </div>
 
     <label>JDR 🎲: <span class="rouge">*</span></label>
@@ -138,7 +140,7 @@ if (isset($_GET['error'])){
     <input type="text" name="autre" id="autre" placeholder="">
 
     <label>Expression libre :</label>
-    <input type="text" name="expression" id="expression" placeholder="">
+    <textarea rows="3" name ="expression" id="expression" style="resize: vertical;"></textarea>	
 
 
     <label>Je veux être notifié des news autour du JDR </label>
@@ -155,7 +157,7 @@ if (isset($_GET['error'])){
 	<div id="submitButtons">	
         <button type="reset">Réinitialiser 🔄</button>	
         <br><br>			
-        <button type="submit" name="submit" id="submit" <?php if (!isset($_SESSION['avatar_url']) and !isset($_SESSION['username'])){echo 'disabled ><b>Veuillez vous connecter';}else{ echo 'style="background-color:#169719;"'?>><b>Valider ✔<?php }?></b></button>					
+        <button type="submit" name="submit" id="submit" <?php if (!isset($_SESSION['avatar_url']) or !isset($_SESSION['username'])){echo 'disabled ><b>Veuillez vous connecter';}else{ echo 'style="background-color:#169719;"'?>><b>Valider ✔<?php }?></b></button>					
         <!--Bloque le bouton si on s'est pas connecté-->				
 	</div>
 
