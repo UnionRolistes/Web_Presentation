@@ -24,7 +24,7 @@ $tranches = $xml->tranche;
     <link rel="stylesheet" href="css/master.css"> <!--Gère la disposition de la page-->
     <link rel="stylesheet" href="css/styleDark.css"><!--Gère les couleurs, affichage sombre par défaut-->
 
-    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/652207549168484352/862019020516622377/ur.png">
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/652207549168484352/862020088788942868/ur-bl2.png">
     <script src="js/age_switch.js" ></script>
     <script src="js/color_mode_switch.js" ></script>
     <script src="js/requireMJ.js" ></script>
