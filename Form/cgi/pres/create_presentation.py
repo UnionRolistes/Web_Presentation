@@ -27,6 +27,9 @@ def verify_data(form: cgi.FieldStorage) -> str:
     if form.getvalue('age') == "" and form.getvalue('trancheAge') == "": # Si aucun des 2 n'est rempli
         return False
 
+    if not form.getvalue('age').isdigit():
+        return False
+
     if form.getvalue('age') != "":
         age = int(form.getvalue('age'))
         if age <= 0 or age > 150:
@@ -46,7 +49,9 @@ def verify_data(form: cgi.FieldStorage) -> str:
             return False
 
     # On vérifie MJ/PJ :
-    if form.getvalue('typeJoueur') != 'MJ' and form.getvalue('typeJoueur') != 'PJ' and form.getvalue('typeJoueur') != "":
+    if not form.getvalue('MJ') and not form.getvalue('PJ'): # Si aucun des 2 n'a été coché
+        return False
+    if (form.getvalue('MJ') !='MJ' and form.getvalue('MJ') !='') or (form.getvalue('PJ') !='PJ' and form.getvalue('PJ') !=''): # Si au moins un des 2 a une valeur trafiquée
         return False
 
 
@@ -54,7 +59,7 @@ def get_payload(form: cgi.FieldStorage) -> str:
     """ Process form data to create webhook payload. """
 
     if not verify_data(form): # Si les données sont invalides :
-        print("Location: http://presentation.unionrolistes.fr?error=invalidData") # Lien à personnaliser avant la mise en ligne ( ../../index.php en lien local)
+        print("Location: http://presentation.unionrolistes.fr?error=invalidData")
     else:
         res = ""
         checks = []
@@ -63,6 +68,12 @@ def get_payload(form: cgi.FieldStorage) -> str:
         if form.getvalue('gn'):
             checks.append("**GN: ** ☑")
 
+        MJs = []
+        if form.getvalue('MJ'):
+            MJs.append("MJ")
+        if form.getvalue('PJ'):
+            MJs.append("PJ")
+
         kwargs = {
             'pseudo': f"<@{form['user_id'].value}> [{form['pseudo'].value}]",
             'home': f"{form.getvalue('region')}{' - ' + form.getvalue('ville') if form.getvalue('ville') else ''}",
@@ -70,7 +81,7 @@ def get_payload(form: cgi.FieldStorage) -> str:
             'experience': form.getvalue('experience'),
             'origin':  form.getvalue('connaissance'),
             'hobby': form.getvalue('hobby'),
-            'mj_pj': form.getvalue('typeJoueur'),
+            'mj_pj': "  et  ".join(MJs),
             'jdr': form.getvalue('JDR'),
             'i_like': form.getvalue('like'),
             'i_dislike': form.getvalue('dislike'),
