@@ -1,3 +1,6 @@
+- Changelog for v0.3.2 (2021-07-09)
+    * Responsive mobile
+
 - Changelog for v0.3.1 (2021-07-08)
     * Fixed the MJ/PJ display bug in the message
     * Expanding the size and saving the "Expression libre" input

@@ -184,3 +184,23 @@ button[disabled]{
 textarea{
   width:100%;
 }
+
+
+/*Pour le responsive et affichage mobile :*/
+@-ms-viewport {
+  width: device-width ;
+}
+
+
+@media screen and (max-width:1050px){
+  /* Pour les ecrans de moins de 1050 pixels de large */
+
+  #URform { /*On supprime les espaces vides autour du formulaire */
+    width: 95%; 
+
+    border : 1px solid #000;
+    box-shadow: 5px 8px 6px black;
+    margin-left: 0;
+    margin:0;
+  }
+}
