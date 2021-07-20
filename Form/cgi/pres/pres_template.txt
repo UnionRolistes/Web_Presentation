@@ -1,6 +1,4 @@
 # !**GMT :** +1 (france ) -
-`NOUVELLE PRÉSENTATION`
-`*********************`
 **Pseudo :**  {pseudo}
 **Domicile **  {home}
 **Age :**  {age}
