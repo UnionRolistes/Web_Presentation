@@ -1,5 +1,5 @@
-- Changelog for v0.3.2 (2021-07-23)
-    * Responsive mobile
+- Changelog for v0.3.3 (2021-07-23)
+    * Added CC BY licence to the footer
 
 - Changelog for v0.3.2 (2021-07-09)
     * Responsive mobile
