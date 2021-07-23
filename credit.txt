@@ -1,4 +1,4 @@
-site et bot créé pour l'association Union des roliste.
-avec la participation de @Dae#5125 @Lyss#4053 @Maestro#8364 (discord)
+Site et bot créé pour l'association Union des roliste.
+Avec la participation de @Dae#5125 @Lyss#4053 @Maestro#8364 (discord)
 
-utilisation non commerciale, copie/modification autorisée, merci de citer vos sources.
+Utilisation non commerciale, copie/modification autorisée, merci de citer vos sources.
