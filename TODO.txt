@@ -1,0 +1,14 @@
+Design : 
+- Idée de design sympa pour la checkbox de l'age ?
+
+Backend : 
+- Bug : Cocher la case d'age puis Reset reset seulement la checkbox, pas l'affichage Age/Tranche d'age :
+Rajouter onclick=[function] sur le bouton reset ne suffit pas, on dirait qu'il execute d'abord la fonction JS avant de decocher les cases
+Meme probleme avec la checkbox pour le mode Clair/Sombre. A voir si y'a un moyen d'exclure ces checkboxes du reset
+
+
+À ajouter:
+- Gérer le cas où l'utilisateur annule l'oauth2
+- Quand le message est bien envoyé vers Discord, renvoyer l'info à la page Web pour alert l'utilisateur que tout s'est bien passé 
+(faisable en passant un paramètre dans l'Url, comme pour les erreurs)
+- Rajouter des emojis OS dans Autre (copier :apple:, etc. ne marche pas sur le Web)
