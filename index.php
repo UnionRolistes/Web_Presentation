@@ -4,6 +4,12 @@ session_start();
 if (isset($_GET['webhook']))
     $_SESSION['webhook'] = $_GET['webhook'];
 
+    
+# this is not to leak authotification information
+# stored in config.php when pushing to github
+if(!file_exists("php/config.php")){
+    copy("php/config.php.default", "php/config.php");
+}
 
 $xml = simplexml_load_file('data/regions.xml'); 
 $regions = $xml->region;
