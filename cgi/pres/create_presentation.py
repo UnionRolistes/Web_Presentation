@@ -57,7 +57,7 @@ def verify_data(form: cgi.FieldStorage) -> str:
 def get_payload(form: cgi.FieldStorage) -> str:
     """ Process form data to create webhook payload. """
 
-    if not verify_data(form): # Si les données sont invalides :
+    if (False): #not verify_data(form): # Si les données sont invalides :
         print("Location: http://presentation.unionrolistes.fr?error=invalidData")
     else:
         res = ""
