@@ -185,6 +185,9 @@ textarea{
   width:100%;
 }
 
+a{
+  text-decoration: none;
+}
 
 /*Pour le responsive et affichage mobile :*/
 @-ms-viewport {
@@ -203,5 +206,16 @@ textarea{
     box-shadow: 5px 8px 6px black;
     margin-left: 0;
     margin:0;
+  }
+}
+
+@media screen and (max-width:450px){
+
+  #URform {
+    grid-gap: 1em 2%; /*Distance verticale puis horizontale entre les éléments*/
+    padding: 1em;
+  }
+  #submit{
+    height: 50%;    
   }
 }

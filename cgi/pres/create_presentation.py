@@ -19,46 +19,52 @@ cgitb.enable(display=1)
 
 # Verification des données :
 def verify_data(form: cgi.FieldStorage) -> str:
-    # Verification des champs obligatoires :
-    if form.getvalue('region') == "" or form.getvalue('connaissance') == "" or form.getvalue('JDR') == "":
-        return False
+    
+    try:
+        # Verification des champs obligatoires :
+        if form.getvalue('region') == "" or form.getvalue('connaissance') == "" or form.getvalue('JDR') == "":
+            return 'Champs requis non remplis'
 
-    if form.getvalue('age') == "" and form.getvalue('trancheAge') == "": # Si aucun des 2 n'est rempli
-        return False
+        if form.getvalue('age') == "" and form.getvalue('trancheAge') == "": # Si aucun des 2 n'est rempli
+            return 'Age non rempli'
 
-    if not form.getvalue('age').isdigit():
-        return False
+        #if not form.getvalue('age').isdigit():
+            #return 'Age non numerique'
 
-    if form.getvalue('age') != "":
-        age = int(form.getvalue('age'))
-        if age <= 0 or age > 150:
-            return False
-    else:
-        tranche_age = form.getvalue('trancheAge')
-        # On vérifie que la tranche corresponde à une qui existe dans le xml :
-        is_in_list = False
+        if form.getvalue('age') != "":
+            age = int(form.getvalue('age'))
+            if age <= 0 or age > 150:
+                return 'Age non realiste'
+        else:
+            tranche_age = form.getvalue('trancheAge')
+            # On vérifie que la tranche corresponde à une qui existe dans le xml :
+            is_in_list = False
 
-        with open("../../data/tranchesAge.xml", 'r', encoding='utf-8') as f:
-            xml_root = ET.fromstring(f)
-            for x in xml_root.findall('tranche'):
-                tranche = x.text
-                if tranche == tranche_age:
-                    is_in_list = True
-        if not is_in_list:
-            return False
+            with open("../../data/tranchesAge.xml", 'r', encoding='utf-8') as f:
+                xml_root = ET.fromstring(f)
+                for x in xml_root.findall('tranche'):
+                    tranche = x.text
+                    if tranche == tranche_age:
+                        is_in_list = True
+            if not is_in_list:
+                return 'Tranche d\'age inconnue'
 
-    # On vérifie MJ/PJ :
-    if not form.getvalue('MJ') and not form.getvalue('PJ'): # Si aucun des 2 n'a été coché
-        return False
-    if (form.getvalue('MJ') !='MJ' and form.getvalue('MJ') !='') or (form.getvalue('PJ') !='PJ' and form.getvalue('PJ') !=''): # Si au moins un des 2 a une valeur trafiquée
-        return False
+        # On vérifie MJ/PJ :
+        if not form.getvalue('MJ') and not form.getvalue('PJ'): # Si aucun des 2 n'a été coché
+            return 'MJ/PJ non rempli'
+        if (form.getvalue('MJ') !='MJ' and form.getvalue('MJ') !='') or (form.getvalue('PJ') !='PJ' and form.getvalue('PJ') !=''): # Si au moins un des 2 a une valeur trafiquée
+            return 'MJ/PJ non valide'
+        #Si tout est bon :
+        return 'OK'
 
+    except Exception as e: #Sécurité supplémentaire, si une fonction fait une erreur
+        raise e
 
 def get_payload(form: cgi.FieldStorage) -> str:
     """ Process form data to create webhook payload. """
 
-    if (False): #not verify_data(form): # Si les données sont invalides :
-        print("Location: http://presentation.unionrolistes.fr?error=invalidData")
+    if (verify_data(form)!='OK'):  # Si les données sont invalides, on affiche l'erreur :
+        print("Location: http://presentation.unionrolistes.fr?error=invalidData&type="+verify_data(form))
     else:
         res = ""
         checks = []
