@@ -1,3 +1,10 @@
+- Changelog for v0.3.10 (2021-07-30)
+    * Displaying validation message after a successful posting
+
+- Changelog for v0.3.9 (2021-07-29)
+    * Better responsive on mobile
+    * Fix error "invalid data" when it shouldn't
+
 - Changelog for v0.3.3 (2021-07-23)
     * Added CC BY licence to the footer
 
