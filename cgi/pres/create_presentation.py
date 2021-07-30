@@ -132,7 +132,7 @@ def main():
     else:
         # Redirects to main page
         print("Status: 303 See other")
-        print("Location: http://presentation.unionrolistes.fr")
+        print("Location: http://presentation.unionrolistes.fr?error=isPosted")
         print()
 
 if __name__ == '__main__':

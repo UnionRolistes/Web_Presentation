@@ -41,18 +41,16 @@ $tranches = $xml->tranche;
 
 <h1 class="titleCenter">Formulaire de présentation</h2>
 
-
-<form method=post action="cgi/pres/create_presentation.py" name="URform" id="URform" onsubmit="alert('Présentation validée ! Envoi en cours')">
-
-    <?php
+<?php
     if (isset($_GET['error'])){ 
     //Affichage des erreurs. Rajouter des lignes si on rajoute d'autres codes d'erreurs (optimisable en les mettant dans un fichier si on commence à en avoir beaucoup)
         $error=$_GET['error'];
         if($error=='invalidData' && isset($_GET['type'])) echo '<span class="rouge">Données invalides. '.$_GET['type'].'</span>';
-        if($error=='isPosted') echo '<span class="vert">Votre présentation a bien été postée</span>'; //--> Pas encore fonctionnel côté Python
+        if($error=='isPosted') echo '<span class="vert">Votre présentation a bien été postée</span>';
     } 
     ?>
 
+<form method=post action="cgi/pres/create_presentation.py" name="URform" id="URform" onsubmit="alert('Présentation validée ! Envoi en cours')">
     <!-- Connection area -->
     <input type=hidden name="webhook_url" value="<?= isset($_SESSION['webhook']) ? $_SESSION['webhook'] : "" ?>">
     <input type=hidden name="user_id" value="<?= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ""?>">
