@@ -1,6 +1,6 @@
 /*Contient le CSS commun aux versions Dark et Light. Cad la disposition du formulaire.
 Pour les couleurs de chaque thème, voir styleDark et styleLight*/
-
+@import url("switchButton.css"); /*CSS du bouton de changement de mode de couleur*/
 
 /*Police et taille d'écriture : */
 html {
@@ -66,68 +66,6 @@ text-align: center;
 }
 
 
-
-/* Switch et slider : */
-
-.switch {
-position: relative;
-display: inline-block;
-width: 60px;
-height: 34px;
-margin-right: 20px;
-transition: 0.2s ease-in-out;
-transition-property: color, background-color, border;
-}
-
-
-.slider {
-position: absolute;
-cursor: pointer;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-color: #ccc;
--webkit-transition: .4s;
-transition: .4s;
-}
-
-.slider:before {
-position: absolute;
-content: "";
-height: 26px;
-width: 26px;
-left: 4px;
-bottom: 4px;
-background-color: white;
--webkit-transition: .4s;
-transition: .4s;
-}
-
-input:checked + .slider {
-background-color: #2196F3;
-}
-
-input:focus + .slider {
-box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
--webkit-transform: translateX(26px);
--ms-transform: translateX(26px);
-transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-border-radius: 34px;
-}
-
-.slider.round:before {
-border-radius: 50%;
-}
-
-
 /*Other :*/
 
 button{
@@ -142,13 +80,11 @@ button{
   line-height: 1.5;
 }
 
-
 #trancheAge, #age{
   width: 53%;
   margin-left: 2%;
   text-align: center;
 }
-
 
 .beta{
   text-align:center;
@@ -158,21 +94,15 @@ button{
   font-family:mono;
 }
 
-.rouge{
-  color: red;
-}
-.vert{
-  color: rgb(25, 219, 25);
-}
+.rouge{color: red;}
+.vert{color: rgb(25, 219, 25);}
 
 #connexion, #deconnexion{
     border-radius:5px;
     background-color:rgb(207, 204, 204);
     height: 27px;
 }
-#deconnexion{
-margin-left: 4%;
-}
+#deconnexion{margin-left: 4%;}
 
 button:disabled,
 button[disabled]{
@@ -181,13 +111,14 @@ button[disabled]{
   color: white;
 }
 
-textarea{
-  width:100%;
+textarea{width:100%;}
+
+a{text-decoration: none;}
+
+option[disabled] {
+  color: rgb(245, 245, 245);
 }
 
-a{
-  text-decoration: none;
-}
 
 /*Pour le responsive et affichage mobile :*/
 @-ms-viewport {
