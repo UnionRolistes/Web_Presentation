@@ -75,7 +75,6 @@ $tranches = $xml->tranche;
         </label>
     </div>
 
-
     <label>Région : <span class="rouge">*</span></label>
     <select name="region" id="region" required>
             <option value="" selected>--Choisir--</option>
@@ -84,8 +83,6 @@ $tranches = $xml->tranche;
             <option value="<?=$region?>"><?=$region?></option>
         <?php } ?>           
     </select>
-    
-
     
     <label>Ville :</label>
     <input type="text" name="ville" placeholder="Ville"/>
@@ -124,6 +121,27 @@ $tranches = $xml->tranche;
         <input type="checkbox" name="PJ" id="PJ" value="PJ" onclick="chgMjRequire()">PJ
     </div>
 
+    <!-- Information sur nos systèmes jdr -->       
+    <label><img src="img/info.png" alt="Info" title="Nos Jdr" style="width: 20px; height: 20px;">Nos Jdr 🎲</label>
+                
+    <select id="infoJDR"> <!--Juste là pour l'information, ne sera pas envoyé au serveur-->
+        <option selected value="">Info : liste des JdR proposés</option>
+        <?php
+            if (!file_exists('data/jdr_systems.xml')) {
+                exit('Echec lors de la récupération des parties');
+            }
+            # Generates all the options from an xml file
+            $systems = simplexml_load_file("data/jdr_systems.xml");
+            foreach ($systems as $optgroup) {
+                echo '<optgroup label ="' . $optgroup['label'] .'">';
+                foreach ($optgroup as $option) {
+                    echo '<option disabled>' . $option . '</option>'; 
+                }
+                echo '</optgroup>';
+            }
+        ?>         
+    </select>
+
     <label>JDR 🎲: <span class="rouge">*</span></label>
     <input type="text" name="JDR" id="JDR" placeholder="Vos JDR préférés" required>
                         
@@ -152,11 +170,9 @@ $tranches = $xml->tranche;
 
     <label>Je suis intéressé par du JDR grandeur nature </label>
     <input type="checkbox" name="gn">
-
-
-							
-	<div>	
-	</div>
+	
+    
+	<div></div>
 							
 	<div id="submitButtons">	
         <button type="reset">Réinitialiser 🔄</button>	
@@ -168,14 +184,8 @@ $tranches = $xml->tranche;
 	<span class="beta"><b>Attention cet outil est en beta-test</b><br>
     <a href="https://github.com/UnionRolistes/Web_Presentation" uk-icon="icon: github; ratio:1.5">GitHub</a></span>
 </form>
+
 <script src="js/record_form.js"></script>
-
-
-
 </body>
-
-<?php 
-    include('php/footer.php');
-?>
-
+<?php include('php/footer.php');?>
 </html>

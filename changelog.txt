@@ -1,3 +1,8 @@
+- Changelog for v0.3.11 (2021-08-02)
+    * Fix error with MJ/PJ
+    * Displaying list of Jdr proposed by l'Union des Rôlistes as information
+    * Separated color mode button CSS for better modulability
+
 - Changelog for v0.3.10 (2021-07-30)
     * Displaying validation message after a successful posting
 

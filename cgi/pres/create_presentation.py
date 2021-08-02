@@ -52,8 +52,6 @@ def verify_data(form: cgi.FieldStorage) -> str:
         # On vérifie MJ/PJ :
         if not form.getvalue('MJ') and not form.getvalue('PJ'): # Si aucun des 2 n'a été coché
             return 'MJ/PJ non rempli'
-        if (form.getvalue('MJ') !='MJ' and form.getvalue('MJ') !='') or (form.getvalue('PJ') !='PJ' and form.getvalue('PJ') !=''): # Si au moins un des 2 a une valeur trafiquée
-            return 'MJ/PJ non valide'
         #Si tout est bon :
         return 'OK'
 
