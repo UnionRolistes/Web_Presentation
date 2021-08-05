@@ -1,11 +1,9 @@
 <?php
 session_start();
 
-if (isset($_GET['webhook'])){
-    $_SESSION['webhook'] = $_GET['webhook'];}
-else{
-    $_GET['webhook']="";
-}
+if (isset($_GET['webhook']))
+    $_SESSION['webhook'] = $_GET['webhook'];
+
 
     
 # this is not to leak authotification information
@@ -55,7 +53,7 @@ $tranches = $xml->tranche;
 
 <form method=post action="cgi/pres/create_presentation.py" name="URform" id="URform" onsubmit="alert('Présentation validée ! Envoi en cours')">
     <!-- Connection area -->
-    <input type=hidden name="webhook_url" value="<?= isset($_SESSION['webhook']) && !empty($_SESSION['webhook']) ? $_SESSION['webhook'] : $_GET['webhook'] ?>"> <!--Car parfois le contenu de $_SESSION expire-->
+    <input type=hidden name="webhook_url" value="<?= isset($_SESSION['webhook']) ? $_SESSION['webhook'] : "" ?>"> <!--Car parfois le contenu de $_SESSION expire-->
     <input type=hidden name="user_id" value="<?= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ""?>">
     <input type=hidden name="pseudo" value="<?= isset($_SESSION['pseudo']) ? $_SESSION['pseudo'] : ""?>">
 	<label>Connexion Discord <span class="rouge">*</span></label>
