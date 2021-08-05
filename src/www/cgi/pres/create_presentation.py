@@ -119,9 +119,8 @@ def get_webhook_url(_form: cgi.FieldStorage) -> str:
 
 def main():
     try:
-        form = cgi.FieldStorage()
-        adapter=RequestsWebhookAdapter()
-        webhook = Webhook.from_url(get_webhook_url(form), adapter)
+        form = cgi.FieldStorage()       
+        webhook = Webhook.from_url(get_webhook_url(form), adapter=RequestsWebhookAdapter())
         webhook.send(get_payload(form))
     except Exception as e:
         print("Content-Type: text/html")    # HTML is following
