@@ -1,2 +1,3 @@
 .idea/
 __pycache__/
+src/www/php/config.php

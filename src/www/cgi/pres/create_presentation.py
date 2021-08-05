@@ -31,11 +31,12 @@ def verify_data(form: cgi.FieldStorage) -> str:
         #if not form.getvalue('age').isdigit():
             #return 'Age non numerique'
 
-        if form.getvalue('age') != "":
-            age = int(form.getvalue('age'))
-            if age <= 0 or age > 150:
-                return 'Age non realiste'
-        else:
+      #  if form.getvalue('age') != "": #TODO : bug, le code rentre dans cette boucle si on rentre que la tranche d'age, et plante alors car int(NoneType) ne peut pas se faire
+      #      age = int(form.getvalue('age'))
+      #      if age <= 0 or age > 150:
+      #          return 'Age non realiste'
+      #  else:
+        if form.getvalue('trancheAge')!="":
             tranche_age = form.getvalue('trancheAge')
             # On vérifie que la tranche corresponde à une qui existe dans le xml :
             is_in_list = False
@@ -119,7 +120,8 @@ def get_webhook_url(_form: cgi.FieldStorage) -> str:
 def main():
     try:
         form = cgi.FieldStorage()
-        webhook = Webhook.from_url(get_webhook_url(form), adapter=RequestsWebhookAdapter())
+        adapter=RequestsWebhookAdapter()
+        webhook = Webhook.from_url(get_webhook_url(form), adapter)
         webhook.send(get_payload(form))
     except Exception as e:
         print("Content-Type: text/html")    # HTML is following
