@@ -127,10 +127,6 @@ input[type="text"], input[type="number"], select{
   text-align: left;
 }
 
-#modeDiv{
-  text-align: center;
-  margin-bottom: 1%;
-}
 
 #region{width: 100%;}
 
