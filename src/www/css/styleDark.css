@@ -2,9 +2,7 @@ body {
   background-color: #23272A;
   color: white;
 }
-#URform {
-  background: #2C2F33;
-}
+#URform {background: #2C2F33;}
 
 
 /*inputs et boutons : */
@@ -19,15 +17,13 @@ input[type="text"] {
   width: 100%;
   border: 3px solid white;
   -webkit-appearance: none;
-  text-align: center;
 }
 
-button, option {
-  color: white;
-}
+button, option {color: white;}
+
+#submit{background-color: gray;}
 
 select{
-  width: 103%;
   border: 1px solid gray;
 }
 

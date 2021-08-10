@@ -1,3 +1,8 @@
+- Changelog for v0.4.4 (2021-08-10)
+    * Added 3 Jdr in the list
+    * Minor design changes
+    * footer.php -> footer.html
+
 - Changelog for v0.4.3 (2021-08-05)
     * Added Ynn Pryddein to the jdr list
 

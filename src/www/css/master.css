@@ -81,16 +81,15 @@ button{
 }
 
 #trancheAge, #age{
-  width: 53%;
-  margin-left: 2%;
-  text-align: center;
+  width: 100%;
+  text-align: left;
 }
 
 .beta{
   text-align:center;
   margin-top:5vh;
   font-size:14px;
-  color:red;
+  color:rgb(218, 31, 31);
   font-family:mono;
 }
 
@@ -100,9 +99,13 @@ button{
 #connexion, #deconnexion{
     border-radius:5px;
     background-color:rgb(207, 204, 204);
-    height: 27px;
+    height: 30px;
 }
 #deconnexion{margin-left: 4%;}
+#connectField{
+  text-align: center;
+}
+
 
 button:disabled,
 button[disabled]{
@@ -113,11 +116,24 @@ button[disabled]{
 
 textarea{width:100%;}
 
-a{text-decoration: none;}
-
-option[disabled] {
-  color: rgb(245, 245, 245);
+a{
+  text-decoration: none;
+  color: rgb(40, 40, 199);
 }
+
+option[disabled] {color: rgb(245, 245, 245);}
+
+input[type="text"], input[type="number"], select{
+  text-align: left;
+}
+
+#modeDiv{
+  text-align: center;
+  margin-bottom: 1%;
+}
+
+#region{width: 100%;}
+
 
 
 /*Pour le responsive et affichage mobile :*/

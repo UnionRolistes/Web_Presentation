@@ -51,12 +51,25 @@ $tranches = $xml->tranche;
     } 
     ?>
 
+<div id="modeDiv">
+<label id="mode">Sombre 🌙</label>					
+
+    <label class="switch">
+        <input type="checkbox" onclick="chgMode()">
+        <span class="slider round"></span>
+    </label>
+</div>    
+
 <form method=post action="cgi/pres/create_presentation.py" name="URform" id="URform" onsubmit="alert('Présentation validée ! Envoi en cours')">
+
     <!-- Connection area -->
     <input type=hidden name="webhook_url" value="<?= isset($_SESSION['webhook']) ? $_SESSION['webhook'] : "" ?>"> <!--Car parfois le contenu de $_SESSION expire-->
     <input type=hidden name="user_id" value="<?= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ""?>">
     <input type=hidden name="pseudo" value="<?= isset($_SESSION['pseudo']) ? $_SESSION['pseudo'] : ""?>">
-	<label>Connexion Discord <span class="rouge">*</span></label>
+
+    <fieldset id="connectField">
+        <legend>Connexion Discord <span class="rouge">*</span></legend>
+	    <!--<label>Connexion Discord <span class="rouge">*</span></label>-->
     <?php
         if (isset($_SESSION['avatar_url']) and isset($_SESSION['username'])) {
             echo '<div>';
@@ -67,14 +80,8 @@ $tranches = $xml->tranche;
         } else
             echo '<div><input type="button" value="Me connecter" id="connexion" onclick="window.location.href=\'php/get_authorization_code.php\'"/></div>'
     ?>
+    </fieldset>
 
-    <label id="mode">Sombre 🌙</label>					
-    <div>
-        <label class="switch">
-            <input type="checkbox" onclick="chgMode()">
-            <span class="slider round"></span>
-        </label>
-    </div>
 
     <label>Région : <span class="rouge">*</span></label>
     <select name="region" id="region" required>
@@ -89,10 +96,13 @@ $tranches = $xml->tranche;
     <input type="text" name="ville" placeholder="Ville"/>
  
             
-    <fieldset>
-        <legend>Age : <span class="rouge">*</span></legend>
-        <label><input type="checkbox" id="checkAge" onclick="chgAgeDisplay()"> Indiquer une tranche d'âge à la place </label>
-        <label><input type="number" name="age" id="age" min="1" max="150" required></label>
+   <!-- <fieldset>
+        <legend>Age : <span class="rouge">*</span></legend> -->
+    <label>
+        Age : <span class="rouge">*</span>
+        <input type="checkbox" id="checkAge" onclick="chgAgeDisplay()"> Indiquer une tranche d'âge
+    </label>
+        <input type="number" name="age" id="age" min="1" max="150" required placeholder="20 ans, 27 ans, ..">
 
         <select name="trancheAge" id="trancheAge" style="display: none">
             <option value="" selected>--Choisir--</option>
@@ -102,7 +112,7 @@ $tranches = $xml->tranche;
             <?php } ?> 
 
         </select>
-    </fieldset>
+    <!--</fieldset>-->
 
 
 	<label>Ancienneté dans le JDR :</label>
@@ -123,10 +133,10 @@ $tranches = $xml->tranche;
     </div>
 
     <!-- Information sur nos systèmes jdr -->       
-    <label><img src="img/info.png" alt="Info" title="Nos Jdr" style="width: 20px; height: 20px;">Nos Jdr 🎲</label>
+    <label><img src="img/info.png" alt="Info" title="Nos Jdr" style="width: 20px; height: 20px;">INFO : Nos Jdr 🎲</label>
                 
     <select id="infoJDR"> <!--Juste là pour l'information, ne sera pas envoyé au serveur-->
-        <option selected value="">Info : liste des JdR proposés</option>
+        <option selected value="">INFO : liste des JdR proposés</option>
         <?php
             if (!file_exists('data/jdr_systems.xml')) {
                 exit('Echec lors de la récupération des parties');
@@ -188,5 +198,5 @@ $tranches = $xml->tranche;
 
 <script src="js/record_form.js"></script>
 </body>
-<?php include('php/footer.php');?>
+<?php include('php/footer.html');?>
 </html>
