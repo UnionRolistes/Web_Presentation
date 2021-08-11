@@ -1,3 +1,7 @@
+- Changelog for v0.4.6 (2021-08-11)
+    * Update README with install steps
+    * Added license text in main code files
+
 - Changelog for v0.4.5 (2021-08-11)
     * Fix logout script so it don't erase the webhook
 
