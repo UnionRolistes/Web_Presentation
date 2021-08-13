@@ -5,7 +5,7 @@ Backend :
 - Bug : Cocher la case d'age puis Reset reset seulement la checkbox, pas l'affichage Age/Tranche d'age :
 Rajouter onclick=[function] sur le bouton reset ne suffit pas, on dirait qu'il execute d'abord la fonction JS avant de decocher les cases
 Meme probleme avec la checkbox pour le mode Clair/Sombre. A voir si y'a un moyen d'exclure ces checkboxes du reset
-
+- Vérification des données côté Python qui pose des problèmes, elle a donc été temporairement désactivée (cgi/pres/create_presentation.py) --> Erreurs sur l'age lorsqu'on rentre une tranche d'age au lieu d'un age fixe
 
 À ajouter:
 - Gérer le cas où l'utilisateur annule l'oauth2
