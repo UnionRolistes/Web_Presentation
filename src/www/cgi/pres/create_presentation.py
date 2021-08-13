@@ -120,11 +120,11 @@ def get_payload(form: cgi.FieldStorage) -> str:
 
 
 def get_webhook_url(_form: cgi.FieldStorage) -> str:
-    with open(f'/usr/local/src/URbot/whPrez', "rb") as f:
-        array = pickle.load(f)
-        wh_url, guild_id, channel_id = array[int(_form.getvalue('user_id'))]
-        return str(wh_url)
-    #return _form['webhook_url'].value
+    #with open(f'/usr/local/src/URbot/whPrez', "rb") as f:
+    #    array = pickle.load(f)
+    #    wh_url, guild_id, channel_id = array[int(_form.getvalue('user_id'))]
+    #    return str(wh_url)
+    return _form['webhook_url'].value
 
 def main():
     try:
