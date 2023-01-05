@@ -24,7 +24,7 @@ cgitb.enable(display=1)
 
 # Verification des données :
 def verify_data(form: cgi.FieldStorage) -> str:
-    
+
     try:
         # Verification des champs obligatoires :
         if form.getvalue('region') == "" or form.getvalue('connaissance') == "" or form.getvalue('JDR') == "":
@@ -83,6 +83,16 @@ def get_payload(form: cgi.FieldStorage) -> str:
         if form.getvalue('PJ'):
             MJs.append("PJ")
 
+        my_os = []
+        if form.getvalue('linux'):
+            my_os.append(":linux:")
+        if form.getvalue('windows'):
+            my_os.append(":w10:")
+        if form.getvalue('mac'):
+            my_os.append("🍎")
+        if form.getvalue('android'):
+            my_os.append(":android:")
+
         kwargs = {
             'pseudo': f"<@{form['user_id'].value}> [{form['pseudo'].value}]",
             'home': f"{form.getvalue('region')}{' - ' + form.getvalue('ville') if form.getvalue('ville') else ''}",
@@ -95,6 +105,8 @@ def get_payload(form: cgi.FieldStorage) -> str:
             'i_like': form.getvalue('like'),
             'i_dislike': form.getvalue('dislike'),
             'availability': form.getvalue('dispos'),
+            'secouriste': form.getvalue('secouriste'),
+            'os': " ".join(my_os),
             'jobs': form.getvalue('job'),
             'other': form.getvalue('autre'),
             'free_expression': form.getvalue('expression'),
@@ -128,7 +140,7 @@ def get_webhook_url(_form: cgi.FieldStorage) -> str:
 
 def main():
     try:
-        form = cgi.FieldStorage()       
+        form = cgi.FieldStorage()
         webhook = Webhook.from_url(get_webhook_url(form), adapter=RequestsWebhookAdapter())
         webhook.send(get_payload(form))
     except Exception as e:

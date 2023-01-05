@@ -10,6 +10,8 @@
 **J'aime :**  {i_like}
 **J'aime pas :**  {i_dislike}
 **Dispo :**  {availability}
+**Secouriste :**  {secouriste}
+**Os :**  {os}
 **Jobs**  {jobs}
 **Autre** (votre OS par exemple)  {other}
 **Expression Libre:**  {free_expression}
