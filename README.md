@@ -1,3 +1,5 @@
+> **Archivé** — ce repo est remplacé par [UnionRolistes/Bot_Presentation](https://github.com/UnionRolistes/Bot_Presentation) (dossier `web/`) — voir Bot_Presentation#79 et #80. Le CGI Python est éliminé au passage (remplacé par un appel PHP direct au webhook Discord).
+
 # Web_Presentation :
 Permet à un utilisateur de remplir un formulaire de présentation, via la commande $prez, qui sera ensuite mis en forme suivant un modèle (cgi/pres_template.txt) et posté sur Discord
 
